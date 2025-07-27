@@ -1,0 +1,23 @@
+public static class LoadLibraries
+{
+    internal static bool IsLoaded = false;
+
+    public static LoadLibraries()
+    {
+        NativeLibrary.SetDllImportResolver(Assembly.GetExecutingAssembly(), LibraryResolver);
+        IsLoaded = true;
+    }
+
+
+    // Code reference: https://github.com/NickvisionApps/Application/blob/28e3307b8242b2d335f8f65394a03afaf213363a/NickvisionApplication.GNOME/Program.cs#L136
+    private static nint LibraryResolver(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
+    {
+        string fileName;
+        fileName = libraryName switch
+        {
+            "PortAudioLib" => "portaudio",
+            _ => libraryName
+        };
+        return NativeLibrary.Load(fileName, assembly, searchPath);
+    }
+}

@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <NoWarn>NU5128</NoWarn> <!-- Libraries compiled in C don't need references, so this warning can be ignored -->
+    <Version>{{ qt6_lib_ver }}</Version>
+
+    <PackageProjectUrl>https://github.com/PlatinumLucario/Qt6NET/tree/main/NuGet/Qt6C</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/rcalixte/libqt6c</RepositoryUrl>
+    <PackageTags>qt6c;libqt6c;qt6;qt</PackageTags>
+
+    <!-- NuGet Properties -->
+    <Description>Qt 6 for C.
+
+    This unofficial NuGet contains the Qt 6 for C (libqt6c) compiled libraries and can be used in any project that relies on them.
+
+    Note: Since cross-compiling isn't supported yet in the libqt6c zig build scripts, only the Linux libraries are included for now.
+    </Description>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+
+    <!-- Pack Options -->
+    <Title>Qt 6 for C</Title>
+    <PackageId>Qt6C</PackageId>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="/"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="
+      {{ libs_linux_x64 }}
+    ">
+      <PackagePath>runtimes/linux-x64/native/%(Filename)%(Extension)</PackagePath>
+      <Pack>true</Pack>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

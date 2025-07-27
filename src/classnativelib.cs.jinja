@@ -1,0 +1,11 @@
+using System.Dianostics;
+using System.Reflection;
+using System.Runtime.InteropServices;
+
+namespace {{ namespace_name }}.NativeLib;
+
+public class {{ class_name }}
+{
+    [LibraryImport("{{ library_name }}", EntryPoint="{{ libqt6c_func }}")]
+    public static extern {{ type }} {{ function_name }}({{ func_params }});
+}

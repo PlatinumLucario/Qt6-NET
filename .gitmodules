@@ -1,0 +1,3 @@
+[submodule "libqt6c"]
+	path = libqt6c
+	url = https://github.com/rcalixte/libqt6c

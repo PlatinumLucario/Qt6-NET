@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Version>0.1.{{ qt6_lib_ver }}</Version>
+
+    <PackageProjectUrl>https://github.com/PlatinumLucario/Qt6NET</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/PlatinumLucario/Qt6NET</RepositoryUrl>
+    <PackageTags>qt6net;qt6dotnet;csharp;qt6;qt</PackageTags>
+
+    <!-- NuGet Properties -->
+    <Description>Qt6.NET - Qt 6 for C#
+
+    These C# bindings for Qt6 aim to help write Qt6 code in C# programming language.
+    
+    How the bindings work: When calling the code from Qt6.NET, it invokes the libqt6c libraries to provide direct pointers to the native libraries and outputs just as it would when calling Qt6 code natively in either C or C++.
+
+    It helps to provide C# friendly namespaces, classes, interfaces, structs, methods and properties.
+
+    In the future, this will also provide a forwarding backend for Silk.NET code as well.
+    </Description>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+
+    <!-- Pack Options -->
+    <Title>Qt6.NET</Title>
+    <PackageId>Qt6-NET</PackageId>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="/"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Qt6C" Version="{{ qt6_lib_ver }}" />
+  </ItemGroup>
+
+</Project>
